@@ -1,6 +1,6 @@
 # Active Directory Domain Build, Delegation & End-User Migration (domain.com)
 
-A full Active Directory deployment — from promoting a bare Windows Server to a Domain Controller, through OU/delegation design, to migrating production end-user machines onto the `domain.com` domain — documented as a single, end-to-end project.
+A full Active Directory deployment which includes promotion of a bare Windows Server to a Domain Controller, OU/delegation design and migrating production end-user machines onto the `domain.com` domain.
 
 ---
 
@@ -8,9 +8,9 @@ A full Active Directory deployment — from promoting a bare Windows Server to a
 
 Demonstrate the ability to stand up an enterprise Active Directory environment from scratch and operate it in a real-world migration scenario. This project covers three core competencies:
 
-1. **Domain Controller promotion & DNS** — proving you can build the foundation.
-2. **OU structure, security groups & delegation** — proving you can design least-privilege administration.
-3. **End-user machine migration** — proving you can execute a production cutover safely, including user-data preservation and Outlook/Exchange reconfiguration.
+1. **Domain Controller promotion & DNS**: proving you can build the foundation.
+2. **OU structure, security groups & delegation**: proving you can design least-privilege administration.
+3. **End-user machine migration**: proving you can execute a production cutover safely, including user-data preservation and Outlook/Exchange reconfiguration.
 
 ---
 
@@ -38,7 +38,7 @@ Demonstrate the ability to stand up an enterprise Active Directory environment f
 - Replication health validation (`repadmin /replsummary`, `dcdiag`)
 - Organizational Unit (OU) hierarchy design (department-based, tiered admin model)
 - User & security group lifecycle (creation, nesting, membership)
-- Delegation of Control Wizard — granting password-reset rights without Domain Admin
+- Delegation of Control Wizard granting password-reset rights without Domain Admin
 - Domain join process for Windows 10 clients
 - DNS prerequisite checks (`ping`, `nslookup`) before domain join
 - Manual user-profile migration (Desktop, Documents, Downloads, Pictures → D:\)
@@ -119,10 +119,10 @@ ad-domain-build-and-migration/
 - A fully functional `domain.com` single-domain forest was deployed, with DNS integrated into AD.
 - SYSVOL and NETLOGON shares replicated correctly; `dcdiag /v` and `repadmin /replsummary` returned zero errors.
 - A tiered OU structure enforced least-privilege: Helpdesk staff could reset passwords in departmental OUs without possessing Domain Admin rights.
-- Windows 10 client machines were joined to the domain after verifying DNS pointed to the DC (not a public resolver) — the single most common failure point.
+- Windows 10 client machines were joined to the domain after verifying DNS pointed to the DC (not a public resolver), the single most common failure point.
 - User data (Desktop, Documents, Downloads, Pictures) was preserved on D:\UserMigration\[username] and accessible via a desktop shortcut on the new domain profile.
 - Outlook auto-discover successfully connected to the user's Microsoft 365 mailbox; legacy PST files were relocated to D:\ and re-attached.
-- **Risk mitigated:** PST file locations were confirmed *before* migration began — no data loss occurred.
+- **Risk mitigated:** PST file locations were confirmed *before* migration began so no data loss occurred.
 
 ---
 
